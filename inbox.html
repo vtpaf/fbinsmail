@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>临时邮箱收件箱</title>
+</head>
+<body>
+  <h1>收件箱</h1>
+  <div id="mailboxInfo"></div>
+  <ul id="messageList"></ul>
+
+  <script>
+    const API_BASE_URL = 'https://your-api.com'; // 👉 替换为你的 API 地址
+
+    const getQueryParam = (name) => {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    };
+
+    const loadMessages = async () => {
+      const mailbox = getQueryParam('mailbox');
+      if (!mailbox) {
+        document.body.innerHTML = '<h2>未指定邮箱地址</h2>';
+        return;
+      }
+
+      document.getElementById('mailboxInfo').innerText = '当前邮箱：' + mailbox;
+
+      const response = await fetch(`${API_BASE_URL}/api/messages?mailbox=${encodeURIComponent(mailbox)}`);
+      const data = await response.json();
+
+      if (!data.success || !Array.isArray(data.messages)) {
+        document.getElementById('messageList').innerHTML = '<li>获取邮件失败</li>';
+        return;
+      }
+
+      const list = document.getElementById('messageList');
+      list.innerHTML = '';
+
+      data.messages.forEach(msg => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${msg.subject}</strong> 来自 ${msg.from} <br><pre>${msg.body}</pre>`;
+        list.appendChild(li);
+      });
+    };
+
+    loadMessages();
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>临时邮箱创建中...</title>
+</head>
+<body>
+  <h1>正在创建邮箱，请稍候...</h1>
+  <script>
+    const API_BASE_URL = 'https://your-api.com'; // 👉 替换为你的 API 地址
+
+    const getQueryParam = (name) => {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    };
+
+    const createMailbox = async () => {
+      const mode = getQueryParam('mode');
+      const addr = getQueryParam('addr');
+
+      let response;
+
+      if (mode === 'custom' && addr) {
+        response = await fetch(`${API_BASE_URL}/api/mailboxes`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ address: addr, expiresInHours: 24 })
+        });
+      } else {
+        response = await fetch(`${API_BASE_URL}/api/mailboxes`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ expiresInHours: 24 })
+        });
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        const mailbox = data.mailbox;
+        window.location.href = `/inbox.html?mailbox=${encodeURIComponent(mailbox.address)}`;
+      } else {
+        document.body.innerHTML = `<h2>创建失败: ${data.error || "未知错误"}</h2>`;
+      }
+    };
+
+    createMailbox();
+  </script>
+</body>
+</html>
