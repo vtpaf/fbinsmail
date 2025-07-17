@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex justify-center items-center space-x-4">
             <a
-              href="https://zaunist.com"
+              href="http://fbins607.com"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
               {t("common.blog")}
             </a>
             <a
-              href="https://www.youtube.com/@zaunist"
+              href="http://fbins607.com"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors"
