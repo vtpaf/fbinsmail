@@ -1,13 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>临时邮箱创建中...</title>
+  <title>创建邮箱中...</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f6f8fa;
+      text-align: center;
+      padding-top: 100px;
+      color: #333;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    .spinner {
+      margin-top: 30px;
+      border: 6px solid #eee;
+      border-top: 6px solid #0078D4;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+  </style>
 </head>
 <body>
-  <h1>正在创建邮箱，请稍候...</h1>
+  <h1>正在为你创建邮箱，请稍候...</h1>
+  <div class="spinner"></div>
   <script>
-    const API_BASE_URL = 'https://your-api.com'; // 👉 替换为你的 API 地址
+    const API_BASE_URL = 'https://fbinsmail.top'; // 替换为你的API地址
 
     const getQueryParam = (name) => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -17,7 +45,6 @@
     const createMailbox = async () => {
       const mode = getQueryParam('mode');
       const addr = getQueryParam('addr');
-
       let response;
 
       if (mode === 'custom' && addr) {
@@ -40,7 +67,7 @@
         const mailbox = data.mailbox;
         window.location.href = `/inbox.html?mailbox=${encodeURIComponent(mailbox.address)}`;
       } else {
-        document.body.innerHTML = `<h2>创建失败: ${data.error || "未知错误"}</h2>`;
+        document.body.innerHTML = `<h2>创建失败：${data.error || "未知错误"}</h2>`;
       }
     };
 
