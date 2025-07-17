@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
               {t("common.about", "关于我们")}
             </Link>
           </div>
-            /*
+            {/*
             <div className="flex justify-center items-center space-x-4">
               <a
                 href="http://fbins607.com"
@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
                 {t("common.xugouMonitor")}
               </a>
             </div>
-            */
+            */}
         </div>
       </Container>
     </footer>
