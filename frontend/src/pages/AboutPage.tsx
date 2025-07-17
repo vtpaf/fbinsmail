@@ -43,7 +43,7 @@ const AboutPage: React.FC = () => {
         <h2 className="text-xl font-semibold mt-8 mb-2">{t('about.opensource.title')}</h2>
         <p>{t('about.opensource.intro')}</p>
         <ul>
-          <li><strong>{t('about.opensource.github.title')}</strong>：<a href="https://github.com/zaunist/zmail" className="text-blue-600 hover:underline">https://github.com/zaunist/zmail</a></li>
+          <li><strong>{t('about.opensource.github.title')}</strong>：<a href="" className="text-blue-600 hover:underline"></a></li>
           <li><strong>{t('about.opensource.license.title')}</strong>：{t('about.opensource.license.desc')}</li>
           <li><strong>{t('about.opensource.contribute.title')}</strong>：{t('about.opensource.contribute.desc')}</li>
         </ul>
@@ -52,7 +52,7 @@ const AboutPage: React.FC = () => {
         <p>{t('about.contact.intro')}</p>
         <ul>
           <li><strong>{t('about.contact.github.title')}</strong>：{t('about.contact.github.desc')}</li>
-          <li><strong>{t('about.contact.email.title')}</strong>：y.bz@foxmail.com</li>
+          <li><strong>{t('about.contact.email.title')}</strong>：</li>
         </ul>
         
         <p className="text-center mt-10">{t('about.conclusion')}</p>
