@@ -19,7 +19,7 @@ database_id = "d62b037b-6c4d-44c7-ad96-c56034cc5760"  # 需要替换为您的实
 
 # 设置域名
 [vars]
-VITE_EMAIL_DOMAIN = "fbinsmail.com,fbins-mails.com,fbinsmail.top"   # 替换为您的域名列表，多个域名使用逗号 , 分割。这里的域名只是用来网页上展示，方便复制粘贴使用。
+VITE_EMAIL_DOMAIN = "fbinsmail.com,fb-mails.com,fbinsmail.top"   # 替换为您的域名列表，多个域名使用逗号 , 分割。这里的域名只是用来网页上展示，方便复制粘贴使用。
 
 # 配置邮件处理
 [triggers]
