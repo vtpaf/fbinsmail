@@ -37,3 +37,8 @@ not_found_handling = "single-page-application"
 [observability]
 enabled = false
 head_sampling_rate = 1 # optional. default = 1.
+
+# wrangler publish部署命令
+[[kv_namespaces]]
+binding = "STORE"
+id = "<your-KV-id>"
