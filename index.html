@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>邮箱创建中...</title>
+    <script src="assets/config.js"></script>
+    <script>
+        async function createMailbox() {
+            const params = new URLSearchParams(window.location.search);
+            const address = params.get("address");
+
+            let url = `${API_BASE_URL}/mailboxes`;
+            const body = address ? JSON.stringify({ address }) : null;
+
+            const response = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: body
+            });
+            const data = await response.json();
+
+            const finalAddress = data.address;
+            window.location.href = `inbox.html?address=${finalAddress}`;
+        }
+        createMailbox();
+    </script>
+</head>
+<body>
+    <h2>正在创建邮箱，请稍候...</h2>
+</body>
+</html>

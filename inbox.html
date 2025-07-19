@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>收件箱</title>
+    <script src="assets/config.js"></script>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .email { border: 1px solid #ddd; margin: 10px 0; padding: 10px; }
+        .meta { font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>收件箱</h1>
+    <div id="email-list">正在加载邮件...</div>
+    <script>
+        async function loadEmails() {
+            const params = new URLSearchParams(window.location.search);
+            const address = params.get("address");
+            if (!address) return document.getElementById("email-list").innerText = "邮箱地址无效";
+
+            const response = await fetch(`${API_BASE_URL}/mailboxes/${address}/messages`);
+            const emails = await response.json();
+
+            const list = document.getElementById("email-list");
+            list.innerHTML = "";
+
+            if (!emails.length) return list.innerText = "暂无邮件";
+
+            emails.forEach(email => {
+                const div = document.createElement("div");
+                div.className = "email";
+                div.innerHTML = `
+                    <div class="meta"><strong>时间:</strong> ${email.date} | <strong>发件人:</strong> ${email.from}</div>
+                    <div><strong>主题:</strong> ${email.subject}</div>
+                    <div>${email.body}</div>
+                `;
+                list.appendChild(div);
+            });
+        }
+        loadEmails();
+    </script>
+</body>
+</html>
