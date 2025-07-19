@@ -39,6 +39,13 @@ enabled = false
 head_sampling_rate = 1 # optional. default = 1.
 
 # wrangler publish部署命令
+
+name = "fbinsmail"
+type = "javascript"
+account_id = "a1ce6a796f019e936c18cb257821c090"
+workers_dev = true
+compatibility_date = "2025-07-19"
+
 [[kv_namespaces]]
 binding = "STORE"
-id = "<your-KV-id>"
+id = "994eb46530fb424d9743b5c1a07bacc9"
