@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://api.mail.mdzz.uk',
+        target: 'http://api.fbinsmail.com',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path,
